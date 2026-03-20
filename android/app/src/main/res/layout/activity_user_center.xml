@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skyBlue">
+
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/back"
+            android:backgroundTint="@color/skyBlue"
+            android:padding="8dp"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="个人中心"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/user_center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- 原用户名TextView -->
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户姓名"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <!-- 新增：年级小字 -->
+                <TextView
+                    android:id="@+id/tv_user_grade_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="2024级 计算机学院"
+                    android:textColor="#666666"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <!--  权限标识-->
+            <TextView
+                android:id="@+id/tv_user_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_user_limit"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="普"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <!--  发布活动按钮：管理员显示/普通用户隐藏 -->
+            <Button
+                android:id="@+id/btn_publish_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:backgroundTint="@color/green"
+                android:text="发布活动"
+                android:textColor="@android:color/white"
+                android:textSize="10sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="学号："
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1234567890"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_my_join"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/user_center"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="我的报名 >>" />
+
+    </LinearLayout>
+
+
+    <!-- 管理员权限显示，默认隐藏 -->
+    <LinearLayout
+        android:id="@+id/ll_my_publish"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/admin_center"
+        android:gravity="center_vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="我发布的 >>" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_touch_us"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/user_center"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="联系我们 >>" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_login_out"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/user_center"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="退出登录 >>" />
+
+    </LinearLayout>
+
+</LinearLayout>

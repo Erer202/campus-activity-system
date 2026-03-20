@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/skyBlue"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"> <!-- 垂直居中，让所有子控件在竖直方向居中 -->
+
+        <!-- 个人中心按钮-->
+        <ImageButton
+            android:id="@+id/btn_user"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/personal_center"
+            android:backgroundTint="@color/skyBlue"
+             />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="活动大厅"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:src="@drawable/search"
+            android:background="@color/skyBlue"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            />
+
+        <!-- 筛选按钮-->
+        <ImageButton
+            android:id="@+id/btn_filter"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fliter"
+            android:background="@color/skyBlue"
+             />
+
+    </LinearLayout>
+
+    <!-- 搜索栏（默认隐藏，点击搜索按钮后出现）-->
+    <LinearLayout
+        android:id="@+id/ll_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_border"
+            android:hint="请输入活动名称或ID"
+            />
+        <Button
+            android:id="@+id/btn_to_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索"
+            android:textSize="12sp"
+            android:backgroundTint="@color/green"/>
+        <ImageButton
+            android:id="@+id/btn_exit"
+            android:src="@drawable/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+    <!-- 筛选面板 -->
+    <LinearLayout
+        android:id="@+id/ll_filter_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@drawable/fliter_background"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <!-- 筛选标题 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="筛选"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- 报名状态筛选 -->
+        <RadioGroup
+            android:id="@+id/rg_apply_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/cb_filter_apply_ing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="报名进行中"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/cb_filter_activity_ing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动进行中"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/cb_filter_activity_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已结束"
+                android:textSize="12sp" />
+
+            <!-- 确认筛选 -->
+            <Button
+                android:id="@+id/btn_filter_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/skyBlue"
+                android:text="确认筛选" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

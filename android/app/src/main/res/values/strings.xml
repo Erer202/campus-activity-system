@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Campus Activity</string>
+
+
+    <!-- 注册页面的选项数组 -->
+    <string-array name="grade_options">
+        <item>2021级</item>
+        <item>2022级</item>
+        <item>2023级</item>
+        <item>2024级</item>
+        <item>2025级</item>
+    </string-array>
+
+    <string name="grade_prompt">请选择年级</string>  <!-- 弹出框标题 -->
+</resources>

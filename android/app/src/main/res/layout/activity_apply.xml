@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- 标题栏 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动详情与报名"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 活动id -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="活动ID："
+        android:textSize="12sp"
+        android:textColor="@color/lightGrey"/>
+
+    <TextView
+        android:id="@+id/tv_activity_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123456789"
+        android:textSize="12sp"
+        android:textColor="@color/lightGrey"
+        />
+    </LinearLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightGrey"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- 第一部分：活动详细信息展示 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 活动名称 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动名称："
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_apply_activity_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="校园歌手大赛"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 活动地点 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动地点："
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_apply_activity_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="学校大礼堂"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 组织部门 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="组织部门："
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_apply_activity_dept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="学生会文艺部"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 活动介绍 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动介绍："
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_apply_activity_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="本次校园歌手大赛旨在丰富校园文化生活，为同学们提供展示音乐才华的平台，欢迎全校同学踊跃报名！"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"
+                android:maxLines="10"
+                android:ellipsize="end"/>
+
+            <!-- 活动时间 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动时间："
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_apply_activity_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2026.05.20 - 2026.05.22"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- 报名时间 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="报名截止时间："
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tv_apply_apply_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2026.05.10 23:59"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- 分割线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- 第二部分：报名信息填写 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="报名信息填写"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- 学号 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="学号："
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:id="@+id/et_apply_user_id"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="请输入学号"
+                    android:textSize="16sp"
+                    android:background="@drawable/shape_edittext_border"
+                    android:backgroundTint="@color/lightGrey"
+                    android:paddingHorizontal="10dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <!-- 姓名 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="姓名："
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:id="@+id/et_apply_user_name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="请输入姓名"
+                    android:textSize="16sp"
+                    android:background="@drawable/shape_edittext_border"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="textPersonName"/>
+            </LinearLayout>
+
+            <!-- 学院 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="学院："
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:id="@+id/et_apply_user_school"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="请输入学院"
+                    android:textSize="16sp"
+                    android:background="@drawable/shape_edittext_border"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="textCapWords"/>
+            </LinearLayout>
+
+            <!-- 年级 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="年级："
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <Spinner
+                    android:id="@+id/spinner_apply_grade"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_border"
+                    android:paddingHorizontal="10dp"
+                    android:entries="@array/grade_options"
+                    android:prompt="@string/grade_prompt"/>
+            </LinearLayout>
+
+            <!-- 联系方式 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="联系方式："
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:id="@+id/et_apply_user_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:hint="请输入手机号"
+                    android:textSize="16sp"
+                    android:background="@drawable/shape_edittext_border"
+                    android:paddingHorizontal="10dp"
+                    android:inputType="phone"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 立即报名按钮 -->
+    <Button
+        android:id="@+id/btn_apply_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="立即报名"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/skyBlue"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"/>
+
+</LinearLayout>

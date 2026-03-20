@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 顶部标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skyBlue">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:src="@drawable/back"
+            android:backgroundTint="@color/skyBlue"
+            android:padding="8dp"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="报名详情"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" />
+
+    </LinearLayout>
+
+    <!-- 活动名称提示 -->
+    <TextView
+        android:id="@+id/tv_activity_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="活动名称：XX校园招聘会"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:padding="8dp"/>
+
+    <!-- 添加报名者区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/et_student_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="请输入报名者学号"
+            android:textSize="14sp"
+            android:inputType="number"/>
+
+        <Button
+            android:id="@+id/btn_add_applicant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加报名者"
+            android:textSize="12sp"
+            android:backgroundTint="@color/green"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="8dp"/>
+    </LinearLayout>
+
+    <!-- 空数据提示 -->
+    <TextView
+        android:id="@+id/tv_empty_applicant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无报名者"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+    <!-- 报名者列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_applicant_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
