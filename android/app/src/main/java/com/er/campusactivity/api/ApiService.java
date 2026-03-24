@@ -41,7 +41,7 @@ public interface ApiService {
                                @Query("activityId") Integer activityId);
 
     // 我的报名
-    @GET("api/apply/my/{studentId}")
+    @GET("api/apply/my-join/{studentId}")
     Call<List<MyActivity>> getMyJoinActivities(@Path("studentId") String studentId);
 
     // 取消报名
@@ -55,7 +55,7 @@ public interface ApiService {
     Call<MyActivity> publishActivity(@Body MyActivity activity);
 
     // 查找发布的活动
-    @GET("activity/my/{publisherId}")
+    @GET("activity/my-publish/{publisherId}")
     Call<List<MyActivity>> getMyPublishedActivities(@Path("publisherId") String publisherId);
 
     // 删除发布的活动
@@ -78,6 +78,12 @@ public interface ApiService {
 
     @GET("activity/search")
     Call<List<MyActivity>> searchActivities(@Query("keyword") String keyword);
+
+    // 管理员取消用户报名
+    @DELETE("api/apply/admin-cancel")
+    Call<ApiMessage> adminCancelApplicant(@Query("publisherId") String publisherId,
+                                          @Query("studentId") String studentId,
+                                          @Query("activityId") Integer activityId);
 }
 
 

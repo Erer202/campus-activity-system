@@ -75,6 +75,16 @@
             android:layout_marginLeft="8dp"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_applicant_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="报名总人数：0"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <!-- 空数据提示 -->
     <TextView
         android:id="@+id/tv_empty_applicant"
@@ -86,6 +96,8 @@
         android:visibility="visible"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"/>
+
+
 
     <!-- 报名者列表 -->
     <androidx.recyclerview.widget.RecyclerView

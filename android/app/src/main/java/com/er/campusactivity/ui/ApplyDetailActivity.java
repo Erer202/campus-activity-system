@@ -40,6 +40,7 @@ public class ApplyDetailActivity extends BaseActivity {
     private MyActivity activity;  // 当前活动
     private EditText et_student_id;
     private Button btn_add_applicant;
+    private TextView tv_applicant_count;
 
     @Override
     protected int getLayoutId() {
@@ -66,15 +67,15 @@ public class ApplyDetailActivity extends BaseActivity {
 
         rv_applicant_list = findViewById(R.id.rv_applicant_list);
         tv_empty_applicant = findViewById(R.id.tv_empty_applicant);
+        tv_applicant_count = findViewById(R.id.tv_applicant_count);
 
         rv_applicant_list.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ApplyDetailAdapter(this, new ArrayList<>(), activity);
-        rv_applicant_list.setAdapter(adapter);
+
     }
 
     @Override
     protected void initData() {
-        // 从 Intent 获取传入的活动对象
+        applyDao = new ApplyDao(this);
         activity = (MyActivity) getIntent().getSerializableExtra("activity");
 
         if (activity == null) {
@@ -83,15 +84,26 @@ public class ApplyDetailActivity extends BaseActivity {
             return;
         }
 
+        adapter = new ApplyDetailAdapter(this, new ArrayList<>(), activity);
+        adapter.setOnApplicantChangedListener(newCount ->
+                tv_applicant_count.setText("报名总人数：" + newCount));
+        rv_applicant_list.setAdapter(adapter);
+
         loadApplicants();
     }
 
     // 加载报名者列表
-
     private void loadApplicants() {
         User currentUser = AppApplication.getCurrentUser();
         if (currentUser == null) {
+            tv_applicant_count.setText("报名总人数：0");
             showEmptyView("请先登录");
+            return;
+        }
+
+        if (activity == null) {
+            tv_applicant_count.setText("报名总人数：0");
+            showEmptyView("活动信息异常");
             return;
         }
 
@@ -102,6 +114,8 @@ public class ApplyDetailActivity extends BaseActivity {
                     public void onResponse(Call<List<ApplicantInfo>> call, Response<List<ApplicantInfo>> response) {
                         if (response.isSuccessful() && response.body() != null) {
                             List<ApplicantInfo> list = response.body();
+                            tv_applicant_count.setText("报名总人数：" + list.size());
+
                             if (list.isEmpty()) {
                                 showEmptyView("暂无报名者");
                             } else {
@@ -109,12 +123,14 @@ public class ApplyDetailActivity extends BaseActivity {
                                 adapter.setNewData(list);
                             }
                         } else {
+                            tv_applicant_count.setText("报名总人数：0");
                             showEmptyView("获取报名者失败");
                         }
                     }
 
                     @Override
                     public void onFailure(Call<List<ApplicantInfo>> call, Throwable t) {
+                        tv_applicant_count.setText("报名总人数：0");
                         showEmptyView("网络错误：" + t.getMessage());
                     }
                 });

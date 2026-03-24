@@ -16,4 +16,7 @@ public interface ApplyRepository extends JpaRepository<Apply, Integer> {
     List<Apply> findByActivityId(Integer activityId);
 
     List<Apply> findByStudentId(String studentId);
+
+    // 查找该活动的报名人数
+    long countByActivityId(Integer activityId);
 }

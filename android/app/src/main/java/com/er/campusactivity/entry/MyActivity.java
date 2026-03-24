@@ -16,11 +16,11 @@ public class MyActivity implements Serializable {
     private String publisherId;
     private int applyStatus;     // 报名状态：0-未开始 1-进行中 2-已结束
     private int activityStatus;  // 活动状态：0-未开始 1-进行中 2-已结束
-
+    private long signupCount;
 
     public MyActivity(int id, String name, String intro, String dept,
                       String activityTime, String applyTime, String requirement,
-                      String location, String publisherId, int applyStatus, int activityStatus) {
+                      String location, String publisherId, int applyStatus, int activityStatus,long signupCount) {
         this.id = id;
         this.name = name;
         this.intro = intro;
@@ -32,6 +32,7 @@ public class MyActivity implements Serializable {
         this.publisherId = publisherId;
         this.applyStatus = applyStatus;
         this.activityStatus = activityStatus;
+        this.signupCount = signupCount;
     }
 
     public MyActivity(){
@@ -124,5 +125,13 @@ public class MyActivity implements Serializable {
 
     public void setActivityStatus(int activityStatus) {
         this.activityStatus = activityStatus;
+    }
+
+    public long getSignupCount() {
+        return signupCount;
+    }
+
+    public void setSignupCount(long signupCount) {
+        this.signupCount = signupCount;
     }
 }

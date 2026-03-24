@@ -2,6 +2,7 @@ package com.er.campus.server.service;
 
 import com.er.campus.server.entity.MyActivity;
 import com.er.campus.server.repository.ActivityRepository;
+import com.er.campus.server.repository.ApplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +14,32 @@ public class ActivityService {
 
     @Autowired
     private ActivityRepository activityRepository;
+    @Autowired
+    private ApplyRepository applyRepository;
+
 
     public List<MyActivity> getAllActivities() {
+        List<MyActivity> list = activityRepository.findAll();
+        fillSignupCount(list);
         return activityRepository.findAll();
     }
 
     public List<MyActivity> searchActivities(String keyword) {
+        List<MyActivity> list;
         try {
             Integer id = Integer.parseInt(keyword);
             return activityRepository.findByNameContainingOrIdEquals(keyword, id);
         } catch (NumberFormatException e) {
-            return activityRepository.findByNameContaining(keyword);
+            list = activityRepository.findByNameContaining(keyword);
+        }
+        fillSignupCount(list);
+        return list;
+    }
+
+    private void fillSignupCount(List<MyActivity> list) {
+        for (MyActivity activity : list) {
+            long count = applyRepository.countByActivityId(activity.getId());
+            activity.setSignupCount(count);
         }
     }
 

@@ -76,7 +76,7 @@ public class ApplyController {
     }
 
     // 我的报名列表
-    @GetMapping("/my/{studentId}")
+    @GetMapping("/my-join/{studentId}")
     public ResponseEntity<?> getMyJoinActivities(@PathVariable String studentId) {
         List<MyActivity> list = activityRepository.findMyJoinedActivities(studentId);
         return ResponseEntity.ok(list);
@@ -98,7 +98,7 @@ public class ApplyController {
     }
 
     // 查询我发布的活动
-    @GetMapping("/my/{publisherId}")
+    @GetMapping("/my-publish/{publisherId}")
     public ResponseEntity<?> getMyPublishedActivities(@PathVariable String publisherId) {
         List<MyActivity> list = activityService.getMyPublishedActivities(publisherId);
         return ResponseEntity.ok(list);
@@ -196,4 +196,37 @@ public class ApplyController {
         return ResponseEntity.ok(Map.of("message", "添加报名者成功"));
     }
 
+    // 管理员取消用户报名
+    @DeleteMapping("/admin-cancel")
+    @Transactional
+    public ResponseEntity<?> adminCancelApplicant(@RequestParam String publisherId,
+                                                  @RequestParam String studentId,
+                                                  @RequestParam Integer activityId) {
+        Optional<User> publisherOptional = userRepository.findById(publisherId);
+        if (publisherOptional.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("message", "管理员账号不存在"));
+        }
+
+        User publisher = publisherOptional.get();
+        if (publisher.getIsAdmin() == null || publisher.getIsAdmin() != 1) {
+            return ResponseEntity.status(403).body(Map.of("message", "只有管理员才能执行该操作"));
+        }
+
+        Optional<MyActivity> activityOptional = activityRepository.findById(activityId);
+        if (activityOptional.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("message", "活动不存在"));
+        }
+
+        MyActivity activity = activityOptional.get();
+        if (activity.getPublisherId() == null || !activity.getPublisherId().equals(publisherId)) {
+            return ResponseEntity.status(403).body(Map.of("message", "你无权操作该活动"));
+        }
+
+        long count = applyRepository.deleteByStudentIdAndActivityId(studentId, activityId);
+        if (count <= 0) {
+            return ResponseEntity.badRequest().body(Map.of("message", "未找到该报名记录"));
+        }
+
+        return ResponseEntity.ok(Map.of("message", "取消报名成功"));
+    }
 }

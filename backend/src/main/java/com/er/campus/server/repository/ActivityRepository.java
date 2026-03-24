@@ -22,4 +22,5 @@ public interface ActivityRepository extends JpaRepository<MyActivity, Integer> {
             "WHERE ap.student_id = ?1 " +
             "ORDER BY a.id DESC", nativeQuery = true)
     List<MyActivity> findMyJoinedActivities(String studentId);
+
 }

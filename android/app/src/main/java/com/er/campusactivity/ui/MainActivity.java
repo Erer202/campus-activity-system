@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private PopupWindow filterPopupWindow; // 筛选弹窗
     private RecyclerView recyclerView;
     private ImageButton btn_filter;
-    private List<MyActivity> activityList;
+    private List<MyActivity> activityList = new ArrayList<>();
     private ActivityAdapter activityAdapter;
     private ImageButton btn_user;
     private static final int REQUEST_USER_CENTER = 1002;
@@ -248,7 +248,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void onResponse(Call<List<MyActivity>> call, Response<List<MyActivity>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     // 改这里：MyActivity
-                    List<MyActivity> activityList = response.body();
+                    activityList = response.body();
                     activityAdapter.setNewData(activityList);
                 } else {
                     Toast.makeText(MainActivity.this, "接口返回空数据", Toast.LENGTH_SHORT).show();
@@ -271,6 +271,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             // 只要有 RESULT_OK 就刷新列表
             refreshActivityList();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadActivityData();
     }
 
     private void refreshActivityList() {

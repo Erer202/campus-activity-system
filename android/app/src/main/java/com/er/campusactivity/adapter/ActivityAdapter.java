@@ -1,6 +1,7 @@
 package com.er.campusactivity.adapter;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,18 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
         holder.tv_activityTime.setText(activity.getActivityTime());
         holder.tv_location.setText(activity.getLocation());
         holder.tv_applyTime.setText(activity.getApplyTime());
+        holder.tv_signupCount.setText("报名人数：" + activity.getSignupCount());
+
+        if (activity.getApplyStatus() == 1) {
+            holder.tv_applyStatus.setText("报名中");
+            holder.tv_applyStatus.setTextColor(Color.parseColor("#2E7D32"));
+        } else if (activity.getApplyStatus() == 2) {
+            holder.tv_applyStatus.setText("报名截止");
+            holder.tv_applyStatus.setTextColor(Color.parseColor("#D32F2F"));
+        } else {
+            holder.tv_applyStatus.setText("未开始");
+            holder.tv_applyStatus.setTextColor(Color.parseColor("#F57C00"));
+        }
 
         // 设置详情页面的点击监听
         holder.tv_activityMessage.setOnClickListener(v -> {
@@ -66,7 +79,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
 
     // ViewHolder：缓存视图
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_name, tv_intro, tv_dept, tv_activityTime, tv_location,tv_applyTime, tv_activityMessage;
+        TextView tv_name, tv_intro, tv_dept, tv_activityTime, tv_location,tv_applyTime, tv_activityMessage, tv_signupCount, tv_applyStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +90,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHo
             tv_location = itemView.findViewById(R.id.tv_location);
             tv_applyTime = itemView.findViewById(R.id.tv_apply_time);
             tv_activityMessage = itemView.findViewById(R.id.tv_activity_message);
+            tv_signupCount = itemView.findViewById(R.id.tv_signup_count);
+            tv_applyStatus = itemView.findViewById(R.id.tv_apply_status);
         }
     }
 

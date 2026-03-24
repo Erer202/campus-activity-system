@@ -87,7 +87,7 @@ public class ActivityController {
         return ResponseEntity.ok(saved);
     }
 
-    @GetMapping("/my/{publisherId}")
+    @GetMapping("/my-publish/{publisherId}")
     public ResponseEntity<?> getMyPublishedActivities(@PathVariable String publisherId) {
         List<MyActivity> list = activityService.getMyPublishedActivities(publisherId);
         return ResponseEntity.ok(list);

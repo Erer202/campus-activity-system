@@ -33,4 +33,10 @@ public class MyActivity {
 
     @Column(name = "activity_status")
     private Integer activityStatus = 0;
+
+    @Transient
+    private Long signupCount = 0L;
+
+
+
 }

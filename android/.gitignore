@@ -1,20 +1,15 @@
-# Android Studio
 *.iml
-.idea/
-
-# Gradle
-.gradle/
-build/
-
-# Local config（本机路径）
-local.properties
-
-# NDK
-.externalNativeBuild/
-.cxx/
-
-# System files
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
 .DS_Store
-
-# Capture
+/build
 /captures
+.externalNativeBuild
+.cxx
+local.properties
